@@ -268,23 +268,24 @@
                 <div class="col-lg-7 mb-5 mb-lg-0">
                     <p class="section-title pr-5"><span class="pr-2">Book A Seat</span></p>
                     <h1 class="mb-4">FREE Diagnostic Test</h1>
-                    <p>Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
-                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                        dolor</p>
+                    <p>
+                      Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
+                      ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+                      dolor
+                    </p>
                     <ul class="list-inline m-0">
                         <li class="py-2"><i class="fa fa-check text-success mr-3"></i>Labore eos amet dolor amet diam</li>
                         <li class="py-2"><i class="fa fa-check text-success mr-3"></i>Etsea et sit dolor amet ipsum</li>
                         <li class="py-2"><i class="fa fa-check text-success mr-3"></i>Diam dolor diam elitripsum vero.</li>
                     </ul>
-                    <a href="" class="btn btn-primary mt-4 py-2 px-4">Book Now</a>
                 </div>
                 <div class="col-lg-5">
                     <div class="card border-0">
                         <div class="card-header bg-secondary text-center p-4">
-                            <h1 class="text-white m-0">Book A Seat</h1>
+                            <h1 class="text-white m-0">FREE Diagnostic Test</h1>
                         </div>
                         <div class="card-body rounded-bottom bg-primary p-5">
-                            <form>
+                            <form id="diagnostictestrequest">
                                 <div class="form-group">
                                     <input type="text" name="parentsname" class="form-control border-0 p-4" placeholder="Parent's Name" required="required" />
                                 </div>
@@ -292,7 +293,7 @@
                                     <input type="text" name="childsname" class="form-control border-0 p-4" placeholder="Child's Name" required="required" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="phonenumbmer" class="form-control border-0 p-4" placeholder="Phone Number" required="required" />
+                                    <input type="phone" name="phonenumber" class="form-control border-0 p-4" placeholder="Phone Number" required="required" />
                                 </div>
                                 <div class="form-group">
                                     <select name="childsgrade" class="custom-select border-0 px-4" style="height: 47px;">
@@ -523,6 +524,27 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbw9mOA8PfCM1fOPCAKrOLCh712xOiDrRLyzkmjkWxLu-hlQYvdq0EwyspQB7mVE2-HzlQ/exec";
+      const form = document.forms["diagnostictestrequest"];
+      form.addEventListener("submit", (e) => {
+        var formData = new FormData(form);
+        var parentsname = document.getElementById("parentsname").text;
+        var childsname  = document.getElementById("childsname").text;
+        var phonenumber = document.getElementById("phonenumber").text;
+        var childsgrade = document.getElementById("childsgrade").text;
+
+        fetch(scriptURL, { method: "POST", body: formData })
+          .then((response) => {
+            swal("Done", "Submitted Successfully.", "success");
+          })
+          .catch((error) => {
+            swal("Error", "Something went wrong. please try again!", "error");
+          });
+        e.preventDefault();
+      });
+    </script>
 </body>
 
 </html>
