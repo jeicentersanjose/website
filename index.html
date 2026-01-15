@@ -526,8 +526,8 @@
     <script src="js/main.js"></script>
 
     <script>
-      const scriptURL = "https://script.google.com/macros/s/AKfycbw9mOA8PfCM1fOPCAKrOLCh712xOiDrRLyzkmjkWxLu-hlQYvdq0EwyspQB7mVE2-HzlQ/exec";
-      const form = document.forms["diagnostictestrequest"];
+      let scriptURL = "https://script.google.com/macros/s/AKfycbw9mOA8PfCM1fOPCAKrOLCh712xOiDrRLyzkmjkWxLu-hlQYvdq0EwyspQB7mVE2-HzlQ/exec";
+      let form = document.querySelector('#diagnostictestrequest');
       form.addEventListener("submit", (e) => {
         var formData = new FormData(form);
 
