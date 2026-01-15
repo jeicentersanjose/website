@@ -530,18 +530,10 @@
       const form = document.forms["diagnostictestrequest"];
       form.addEventListener("submit", (e) => {
         var formData = new FormData(form);
-        var parentsname = document.getElementById("parentsname").text;
-        var childsname  = document.getElementById("childsname").text;
-        var phonenumber = document.getElementById("phonenumber").text;
-        var childsgrade = document.getElementById("childsgrade").text;
 
         fetch(scriptURL, { method: "POST", body: formData })
-          .then((response) => {
-            swal("Done", "Submitted Successfully.", "success");
-          })
-          .catch((error) => {
-            swal("Error", "Something went wrong. please try again!", "error");
-          });
+          .then((response) => response.text())
+          .then((finalresponse) => console.log(finalresponse))
         e.preventDefault();
       });
     </script>
